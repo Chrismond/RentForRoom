@@ -1,0 +1,203 @@
+﻿@model List<RentForRoom.Models.PhongModel>
+@{
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@{
+    string q = "KWH";
+    string r = "Người";
+    string e = "Phòng";
+}
+@Html.Action("Index", "Banner")
+<div class="listing-section">
+    <div class="container">
+        <div class="result-head mb-3">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <div class="result-show">
+                        <h5>Tìm kiếm phòng cho thuê</h5>
+                        <p>Hiện có <span id="count-number">@Model.Count()</span> phòng cho thuê</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="for-rent p-0" id="resultContainer">
+            <div class="row">
+                @if (Model.Count() == 0)
+                {
+                    <p>Không có kết quả tìm kiếm.</p>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-12">
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <div class="doc-img" style="background-image:url(@item.HinhAnh)">
+                                            <div class="product-amount" style="display:none">
+                                                <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
+                                            </div>
+                                            <div class="feature-rating ">
+                                                <div>
+                                                    @if (@item.Hide == false)
+                                                    {
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                    }
+                                                    @if (@item.Hide == true)
+                                                    {
+                                                        <div class="featured is--orange">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Tạm hết</span>
+                                                        </div>
+                                                    }
+                                                    @if (@item.NoiBat == true)
+                                                    {
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                @item.TieuDe
+                                            </h3>
+                                            <p>
+                                                <i class="fa fa-fw fa-map-marker"></i>
+                                                @Html.Raw(item.DiaChi), @Html.Action("GetPhuongXaName", "Phong", new { id = item.IDPhuong }),
+                                                @Html.Action("GetQuanHuyenName", "Phong", new { id = item.IDQuan }),
+                                                @Html.Action("GetThanhPhoName", "Phong", new { id = item.IDTP })
+
+                                                @{
+                                                    string a = Html.Action("GetThanhPhoName", "Phong", new { id = item.IDTP }).ToString();
+                                                    string b = Html.Action("GetQuanHuyenName", "Phong", new { id = item.IDQuan }).ToString();
+                                                    string c = Html.Action("GetPhuongXaName", "Phong", new { id = item.IDPhuong }).ToString();
+                                                }
+
+                                            </p>
+                                            <ul class="d-flex details">
+                                                <li class="me-3">
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+
+                                                    <span name="MaTaiKhoan">
+                                                        @{ Html.RenderAction("GetMaTaiKhoanName", "Phong", new { id = item.MaTaiKhoan }); }
+                                                    </span>
+
+                                                </li>
+                                            </ul>
+                                            <div class="q-action cach-le-tren">
+                                                <span class="price-mb giatien">
+                                                    <span>@(@item.GiaThue / 1000000) <small>triệu/tháng</small></span>
+                                                    <button type="button" class="btn btn-success btnbooking float-end"
+                                                            data-item='{
+                                                            "RoomId": "@item.IDPhong",
+                                                            "PropCode": "",
+                                                            "PropAvatar": "@item.HinhAnh",
+                                                            "IsEmpty": 1,
+                                                            "IsHot": 1,
+                                                            "PropPrice": @item.GiaThue,
+                                                            "updated_at": "2024-12-17 10:30:04",
+                                                            "PropType": 4,
+                                                            "PropTypeName": "Căn hộ mini",
+                                                            "PropName": "@item.TieuDe",
+                                                            "ElectricityPrice": @item.TienDien,
+                                                            "ElectricityUnit": "@q",
+                                                            "WaterPrice": @(@item.TienNuoc * 1000),
+                                                            "Nuoc": "@item.TienNuoc",
+                                                            "Dien": "@item.TienDien",
+                                                            "WaterUnit": "@r",
+                                                            "AreaSEOUrl": "quan-go-vap",
+                                                            "PropAddress": "@item.DiaChi, @c, @b, @a",
+                                                            "PQL": "@item.TienDichVụ",
+                                                            "WC": "@(item.WC.HasValue && item.WC.Value ? $"chung" : $"riêng")",
+
+                                                            "DP": "@(item.CuaSoBanCong.HasValue ? (item.CuaSoBanCong.Value ? $"Cửa Sổ" : $"Ban Công") : $"Phòng Kín")",
+                                                            "KB": "@item.KeBep",
+                                                            "KB": "@(item.KeBep.HasValue && item.KeBep.Value ? $"chung" : $"riêng")",
+                                                            "ML": "@item.MayLanh",
+                                                            "TD": "@item.TuDo",
+                                                            "TL": "@item.TuLanh",
+                                                            "SF": "@item.Sofa",
+                                                            "Giuong": "@item.Giuong",
+                                                            "Nem": "@item.Nem",
+                                                            "BG": "@item.BanGhe",
+                                                            "SPN": "@item.SoPhongNgu",
+                                                            "PT": "@item.PhuongTien",
+                                                            "Thang": "@(item.Thang.HasValue && item.Thang.Value ? $"bộ" : $"máy")",
+                                                            "MG": "@(item.MayGiat.HasValue && item.MayGiat.Value ? $"chung" : $"riêng")",
+                                                            "TC": "@(item.ThuCung.HasValue && item.ThuCung.Value ? $"được nuôi" : $"không được nuôi")",
+
+                                                            "Coc": "@(item.TienCoc.HasValue && item.TienCoc.Value ? $"có" : $"không")",
+                                                            "Gio": "@item.GioGiac",
+                                                            "Map": "@item.LinkMap",
+                                                            "v_house_street": "",
+                                                            "v_house_ward_name": "Phường 8",
+                                                            "v_house_district_name": "Quận Gò Vấp",
+                                                            "v_house_id": 5192
+    }'
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#make-an-appointment"
+                                                            @(item.Hide.HasValue && item.Hide.Value ? "disabled" : "")>
+                                                        Đặt Lịch Hẹn
+                                                    </button>
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Phân trang -->
+<div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?page=@(ViewBag.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?page=@i">@i</a>
+                </li>
+            }
+
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="?page=@(ViewBag.CurrentPage + 1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<div class="bg-imgs">
+    <img src="/Content/img/price-bg.png" class="bg-01" alt="icon">
+</div>
+
+<!-- Đặt lịch hẹn-->
+@Html.Action("Index", "DatLichHen")

@@ -1,0 +1,207 @@
+﻿@model RentForRoom.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<div class="section blog-section">
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="loginbox">
+                <div class="login-auth">
+                    <div class="login-auth-wrap">
+                        <h1>Đăng ký thành viên RFR</h1>
+                        <form id="registerForm" action="/Login/Register" class="validate-form" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="GBcIFQU54OgB0i8EieSQxhrQ5eI9kRTq8xGXGmxl">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Họ & Tên <span>*</span></label>
+                                        <input tabindex="1" type="text" autocomplete="off" class="form-control" id="FullName" name="HoTen" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Số điện thoại <span>*</span></label>
+                                        <input tabindex="2" type="text" class="form-control" id="Phone" name="SDT" required autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Email đăng nhập <span>*</span></label>
+                                        <input tabindex="3" type="text" class="form-control" id="Username" name="Gmail" required autocomplete="off" placeholder="vd: abc123@gmail.com">                                       <span id="email_invalid" class="email_invalid" style="display: none; color: red;">Email không hợp lệ</span>
+                                        <span id="email_exists" class="email_exists" style="display: none; color: red;">Email này đã tồn tại</span>
+                                        <span id="email_valid" class="email_valid" style="display: none; color: green;">Email hợp lệ</span>
+
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Mật khẩu <span>*</span></label>
+                                        <div class="pass-group">
+                                            <input tabindex="4" type="password" id="regacc_pwd" name="MatKhau" class="form-control pass-input" required autocomplete="off">
+                                            <span id="passwordError1" style="color: red; display: none;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Xác nhận mật khẩu <span>*</span></label>
+                                        <div class="pass-group">
+                                            <input tabindex="5" type="password" id="regacc_re_pwd" class="form-control pass-input" required autocomplete="off">
+                                            <span id="passwordError" style="color: red; display: none;">Mật khẩu và xác nhận mật khẩu không khớp.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Bạn là: <span>*</span></label>
+                                        <select class="form-control"  style="text-align: center; font-weight: bold;" name="Role" required>
+                                            <option value="">----- Chọn -----</option>
+                                            @foreach (var role in ViewBag.Roles)
+                                            {
+                                                <option value="@role.Id" @(role.Id == Model.Role ? "selected" : "")>@role.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <button type="submit" class="btn btn-outline-light w-100 btn-size">Đăng ký</button>
+                            <div class="text-center dont-have">Bạn đẫ có tài khoản? ? <a href="/Login/SignIn">Đăng nhập tại đây</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+        function validateEmailFormat(email) {
+        var emailPattern =  /^[a-zA-Z0-9._-]+@@[a-zA-Z0-9-]+\.[a-zA-Z]{3,3}$/;  // Định dạng: phải có @@gmail.com
+        return emailPattern.test(email);
+    }
+
+    // Xử lý sự kiện khi người dùng nhập email
+    $('#Username').on('input', function() {
+        var email = $(this).val();
+
+        // Kiểm tra định dạng email
+        if (email && !validateEmailFormat(email)) {
+            $('#email_invalid').show(); // Hiển thị "Email không hợp lệ"
+            $('#email_exists').hide();
+            $('#email_valid').hide();
+            $('#Username').data('valid', false); // Đánh dấu email không hợp lệ
+            $('#Username').css('border-color', 'red'); // Đổi màu viền đỏ khi email không hợp lệ
+        } else if (email) {
+            $('#email_invalid').hide(); // Ẩn thông báo "Email không hợp lệ"
+            checkEmailExistence(email); // Gọi hàm kiểm tra tồn tại
+        } else {
+            // Khi ô nhập trống, ẩn tất cả thông báo
+            $('#email_invalid').hide();
+            $('#email_exists').hide();
+            $('#email_valid').hide();
+            $('#Username').data('valid', false);
+            $('#Username').css('border-color', ''); // Đặt lại viền mặc định
+        }
+    });
+
+    // Hàm kiểm tra email đã tồn tại trong cơ sở dữ liệu hay chưa
+    function checkEmailExistence(email) {
+        // Kiểm tra định dạng email trước khi kiểm tra tồn tại
+        if (!validateEmailFormat(email)) {
+            $('#email_invalid').show(); // Hiển thị "Email không hợp lệ"
+            $('#email_exists').hide();
+            $('#email_valid').hide();
+            $('#Username').data('valid', false);
+            $('#Username').css('border-color', 'red'); // Đổi màu viền đỏ
+            return;
+        }
+
+        // Gửi Ajax để kiểm tra trong cơ sở dữ liệu
+        $.ajax({
+            url: '@Url.Action("CheckAccountExist1", "Login")', // Đảm bảo đường dẫn đúng
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                if (response.success) {
+                    $('#email_valid').show(); // Hiển thị "Email hợp lệ"
+                    $('#email_invalid').hide();
+                    $('#email_exists').hide();
+                    $('#Username').data('valid', true); // Đánh dấu email hợp lệ
+                    $('#Username').css('border-color', 'green'); // Đổi viền xanh
+                } else {
+                    $('#email_exists').text(response.message).show(); // Hiển thị "Email đã tồn tại"
+                    $('#email_valid').hide();
+                    $('#email_invalid').hide();
+                    $('#Username').data('valid', false); // Đánh dấu email không hợp lệ
+                    $('#Username').css('border-color', 'red'); // Đổi viền đỏ
+                }
+            },
+            error: function() {
+                $('#email_exists').text("Đã có lỗi xảy ra!").show(); // Hiển thị lỗi hệ thống
+                $('#email_valid').hide();
+                $('#email_invalid').hide();
+                $('#Username').data('valid', false);
+                $('#Username').css('border-color', 'red'); // Đổi viền đỏ
+            }
+        });
+    }
+
+    // Kiểm tra email trước khi gửi form
+    $('#registerForm').on('submit', function(e) {
+        var isEmailValid = $('#Username').data('valid');
+        if (!isEmailValid || !validateEmailFormat($('#Username').val())) {
+            e.preventDefault(); // Ngăn gửi form
+            alert("Email không hợp lệ hoặc đã tồn tại, vui lòng nhập lại.");
+        }
+    });
+
+    $(document).ready(function () {
+        $('#regacc_re_pwd').on('focus', function () {
+            $('#regacc_re_pwd_error1').show(); // Hiển thị thông báo
+        });
+
+        $('#regacc_re_pwd').on('blur', function () {
+            $('#regacc_re_pwd_error1').hide(); // Ẩn thông báo
+        });
+    });
+
+
+
+    function validatePasswordMatch() {
+        var password = document.getElementById('regacc_pwd').value;
+        var confirmPassword = document.getElementById('regacc_re_pwd').value;
+        var passwordError = document.getElementById('passwordError');
+        var passwordError1 = document.getElementById('passwordError1');
+
+        if (password.length < 8) {
+            passwordError1.innerText = 'Mật khẩu phải có ít nhất 8 ký tự.';
+            passwordError1.style.display = 'inline';
+            return false;
+        }
+        // Kiểm tra nếu mật khẩu và xác nhận mật khẩu khớp
+        if (password !== confirmPassword) {
+            passwordError.style.display = 'inline'; // Hiển thị lỗi
+            return false;
+        } else {
+            passwordError.style.display = 'none'; // Ẩn lỗi nếu khớp
+            return true;
+        }
+    }
+
+    // Hàm gọi validate khi người dùng thay đổi trường xác nhận mật khẩu
+    document.getElementById('regacc_re_pwd').addEventListener('input', function () {
+        validatePasswordMatch();
+    });
+
+    // Hàm gọi validate khi người dùng submit form
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        if (!validatePasswordMatch()) {
+            e.preventDefault();  // Ngừng submit form nếu mật khẩu không khớp
+        }
+    });
+
+</script>

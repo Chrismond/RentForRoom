@@ -1,0 +1,76 @@
+﻿@model IEnumerable<RentForRoom.DBContext.tbQuyen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ PHÂN QUYỀN</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DANH SÁCH CÁC QUYỀN</h5>
+                        <a class="btn btn-success" href="/Admin/AQuyens/Create">THÊM MỚI</a>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Quyền
+                                </th>
+                                <th>
+                                    Trạng Thái
+                                </th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IDQuyen)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenQuyen)
+
+
+                                </td>
+                                <td class="custom-padding">
+                                    @if (item.Hide != true)
+                                    {
+                                        <p>         Hiện</p>
+                                    }
+                                    else
+                                    {
+                                        <p>   ẨN </p>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/Admin/AQuyens/Edit/@item.IDQuyen"><i class="bi bi-pencil-square"></i></a> |
+                                    <a href="/Admin/AQuyens/Details/@item.IDQuyen"><i class="ri-article-line"></i></a> 
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+</main>

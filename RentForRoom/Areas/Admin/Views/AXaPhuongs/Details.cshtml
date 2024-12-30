@@ -1,0 +1,74 @@
+﻿@model RentForRoom.DBContext.tbXaPhuong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN PHƯỜNG/XÃ</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">THÔNG TIN PHƯỜNG/XÃ</h5>
+
+                        <!-- General Form Elements -->
+                        <form action="/Admin/AXaPhuongs/Edit/@Model.IDPhuong" method="post" enctype="multipart/form-data">
+
+                            @Html.HiddenFor(model => model.IDPhuong)
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Quận/Huyện</label>
+                                <div class="col-sm-10">
+                                    <span class="form-control" name="IDQuan">
+                                        @Html.Action("GetQuanHuyenName", "AXaPhuongs", new { id = Model.IDQuan })
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Phường/Xã</label>
+                                <div class="col-sm-10">
+                                    <div class="form-control">
+                                        @Html.Raw(Model.TenPhuong)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Hide</label>
+                                <div class="col-sm-2">
+                                    <div class="form-control text-center">
+                                        <strong>
+
+                                            @if (Model.Hide != true)
+                                            {
+                                                <span>Hiện</span>
+                                            }
+                                            else
+                                            {
+                                                <span>ẨN </span>
+                                            }
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <a href="/Admin/AXaPhuongs" class="btn btn-danger"> Quay Lại</a>
+                                </div>
+                            </div>
+
+                        </form><!-- End General Form Elements -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>

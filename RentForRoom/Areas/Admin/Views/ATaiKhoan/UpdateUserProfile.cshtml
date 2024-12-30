@@ -1,0 +1,186 @@
+﻿@model RentForRoom.Models.ThongTinCaNhanModels
+
+@{
+    ViewBag.Title = "UpdateUserProfile";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Form Gửi Yêu Cầu</h1>
+    </div>
+
+    <section class="section profile">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-start" style=" padding-top: 20px;">
+                <div class="col-xl-10">
+
+                    <div class="card">
+                        <div class="card-body pt-3">
+                            <input type="hidden" id="MatKhau" name="MatKhau" value="@Model.MatKhau">
+
+                            <!-- Bordered Tabs -->
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng Quan</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Thay Đổi Mật Khẩu</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content pt-2">
+
+                                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                                    <div class="row" style="padding-top: 20px;">
+                                        <div class="col-lg-3 col-md-4 label">Email:</div>
+                                        <div class="col-lg-9 col-md-8">
+                                            @Html.Raw(Model.Gmail)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Mật Khẩu:</div>
+                                        <div class="col-lg-9 col-md-8">
+                                            @if (!string.IsNullOrEmpty(Model.MatKhau))
+                                            {
+                                                var maskedPassword = new string('*', Model.MatKhau.Length);
+                                                <span>@maskedPassword</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!---->
+                                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                                    <form method="post" id="updateProfileForm" enctype="multipart/form-data">
+                                        <input type="hidden" name="Gmail" value="@Session["UserEmail"]" />
+                                        <div class="row mb-3" style="padding-top: 10px;">
+                                            <label for="Gmail" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="Gmail" type="text" class="form-control" id="Gmail" value="@Model.Gmail" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="OldMatKhau" class="col-md-4 col-lg-3 col-form-label">Mật Khẩu Cũ</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="OldMatKhau" type="password" class="form-control" id="OldMatKhau" placeholder="Nhập mật khẩu cũ" required>
+                                            </div>
+                                        </div>
+                                        <!-- Mật khẩu mới -->
+                                        <div class="row mb-3">
+                                            <label for="NewMatKhau" class="col-md-4 col-lg-3 col-form-label">Mật Khẩu Mới</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="NewMatKhau" type="password" class="form-control" id="NewMatKhau" placeholder="Nhập mật khẩu mới" required>
+                                            </div>
+                                        </div>
+                                        <!-- Nhập lại mật khẩu mới -->
+                                        <div class="row mb-3">
+                                            <label for="ConfirmNewMatKhau" class="col-md-4 col-lg-3 col-form-label">Nhập lại Mật Khẩu Mới</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="ConfirmNewMatKhau" type="password" class="form-control" id="ConfirmNewMatKhau" placeholder="Nhập lại mật khẩu mới" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <span id="error_message1" class="alert alert-danger" style="color:red; display:none;">Vui lòng sửa lỗi trước khi đăng ký.</span>
+
+                                            @if (TempData["Message"] != null)
+                                            {
+                                                var isSuccess = (bool)TempData["IsSuccess"];
+                                                @*<div class="alert @(isSuccess ? "alert-success" : "alert-danger")">*@
+                                                <div class="alert @(TempData["IsSuccess"] != null && (bool)TempData["IsSuccess"] ? "alert-success" : "alert-danger")">
+                                                    @TempData["Message"]
+                                                </div>
+                                            }
+                                        </div>
+
+
+                                        <div class="text-center">
+                                            <button type="submit" id="updateButton" class="btn btn-primary" onclick="return handleCheck()">Cập Nhật</button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+
+                            </div><!-- End Bordered Tabs -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    function handleCheck() {
+        var oldPwd = document.getElementById("OldMatKhau").value.trim();
+        var newPwd = document.getElementById("NewMatKhau").value.trim();
+        var confirmPwd = document.getElementById("ConfirmNewMatKhau").value.trim();
+        var isValid = true;
+
+        // Kiểm tra mật khẩu cũ không rỗng
+        if (oldPwd === "") {
+            document.getElementById("error_message1").style.display = "block";
+            document.getElementById("error_message1").innerText = "Mật khẩu cũ không được để trống.";
+            isValid = false;
+        } else {
+            document.getElementById("error_message1").style.display = "none";
+        }
+
+        // Kiểm tra mật khẩu mới và xác nhận mật khẩu
+        if (newPwd !== confirmPwd) {
+            document.getElementById("error_message1").style.display = "block";
+            document.getElementById("error_message1").innerText = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+            isValid = false;
+        } else if (newPwd === "") {
+            document.getElementById("error_message1").style.display = "block";
+            document.getElementById("error_message1").innerText = "Mật khẩu mới không được để trống.";
+            isValid = false;
+        } else {
+            document.getElementById("error_message1").style.display = "none";
+        }
+
+
+        return isValid; // Trả về true nếu hợp lệ, ngược lại false
+    }
+
+     $(document).ready(function () {
+        $("#updateProfileForm").submit(function (e) {
+            e.preventDefault(); // Ngăn form gửi mặc định
+
+            $.ajax({
+                url: '@Url.Action("UpdateUserProfile", "ATaiKhoan")', // Đường dẫn đến Action trong Controller
+                type: 'POST',
+                data: $(this).serialize(), // Lấy dữ liệu form
+                success: function (response) {
+                    if ($(response).find('.alert').length) {
+                        // Cập nhật nội dung tab chỉnh sửa
+                        var updatedContent = $(response).find("#profile-edit").html();
+                        $("#profile-edit").html(updatedContent);
+
+                        // Kích hoạt tab chỉnh sửa
+                        $(".nav-tabs .nav-link").removeClass("active");
+                        $(".nav-tabs .nav-link[data-bs-target='#profile-edit']").addClass("active");
+
+                        $(".tab-pane").removeClass("show active");
+                        $("#profile-edit").addClass("show active");
+                    }
+                },
+                error: function () {
+                    alert("Đã xảy ra lỗi trong quá trình gửi yêu cầu. Vui lòng thử lại.");
+                }
+            });
+        });
+    });
+
+
+</script>
+

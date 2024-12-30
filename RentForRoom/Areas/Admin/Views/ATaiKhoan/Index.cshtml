@@ -1,0 +1,138 @@
+﻿@model RentForRoom.Models.ThongTinCaNhanModels
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Thông Tin Cá Nhân</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img src="@Model.HinhAnh" alt="Profile" class="rounded-circle">
+                        <h2>MTK: @Html.Raw(Model.MaTaiKhoan)</h2>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Tổng Quan</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh Sửa Thông Tin</button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <div class="row" style="padding-top: 20px;">
+                                    <div class="col-lg-3 col-md-4 label">Chức vụ:</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @if (Model.Role.HasValue && Model.Role.Value != 0)
+                                        {
+                                            @Html.Action("GetPhanQuyenName", "ATaiKhoan", new { id = Model.Role })
+                                        }
+                                        else
+                                        {
+                                            <text>(Chưa có thông tin)</text>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Họ Tên:</div>
+                                    <div class="col-lg-9 col-md-8">@Html.Raw(Model.HoTen)</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Số điện thoại:</div>
+                                    <div class="col-lg-9 col-md-8">@Html.Raw(Model.SDT)</div>
+                                </div>
+                            </div>
+
+                            <!---->
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                                <!-- Profile Edit Form -->
+                                <form method="post" action="@Url.Action("Index", "ATaiKhoan", new { area = "Admin" })" enctype="multipart/form-data">
+                                    <input type="hidden" name="Gmail" value="@Session["UserEmail"]" />
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-md-4 col-lg-3 col-form-label">Hình ảnh</label>
+                                        <div class="col-md-8 col-lg-9 ">
+                                            <img src="@Model.HinhAnh" width="180" />
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="formFile" class="ol-md-4 col-lg-3 col-form-label"></label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input type="file" name="Editfile" id="formFile" class="d-none">
+
+                                            <i class="bi bi-upload upload-icon" role="button" title="Chọn tệp"></i>
+
+                                            <span id="fileName" class="ms-2 text-secondary fst-italic">Chưa chọn tệp</span>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        document.querySelector('.upload-icon').addEventListener('click', function () {
+                                            document.getElementById('formFile').click();
+                                        });
+
+                                        document.getElementById('formFile').addEventListener('change', function (event) {
+                                            const fileName = event.target.files[0]?.name || 'Chưa chọn tệp';
+                                            document.getElementById('fileName').textContent = fileName;
+                                        });
+
+                                    </script>
+
+                                    <div class="row mb-3">
+                                        <label for="HoTen" class="col-md-4 col-lg-3 col-form-label">Họ tên</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="HoTen" type="text" class="form-control" id="HoTen" value="@Model.HoTen">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="SDT" class="col-md-4 col-lg-3 col-form-label">Số điện thoại</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="SDT" type="text" class="form-control" id="SDT" value="@Model.SDT">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+
+                            </div>
+
+
+
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+

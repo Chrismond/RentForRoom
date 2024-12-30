@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@Html.Action("Index", "Banner")
+<section class="howit-work d-none d-md-block">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Giá Trị Cốt Lõi</h2>
+            <div class="sec-line">
+                <span class="sec-line1"></span>
+                <span class="sec-line2"></span>
+            </div>
+            <p> LaLaHome.vn - Nền tảng ký gửi, hợp tác kd phòng trọ, căn hộ dịch vụ,nhà nguyên căn. </p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span>
+                            <img src="/Content/img/work-icon-1.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>KẾT NỐI</h4>
+                    <p>Tạo môi trường và công cụ kết nối thuận tiện các mắt xích trong mô hình cho thuê bao gồm: chủ nhà, khách thuê, môi giới.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span class="bg-red">
+                            <img src="/Content/img/work-icon-2.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>HỢP TÁC</h4>
+                    <p>Thúc đẩy việc hợp tác các môi quan hệ, nguồn lực để tạo ra kết quả chung trên nguyên tắc: rõ ràng, minh bạch, công bằng.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="howit-work-card">
+                    <div class="work-card-icon">
+                        <span class="bg-green">
+                            <img src="/Content/img/work-icon-3.svg" alt="icon">
+                        </span>
+                    </div>
+                    <h4>PHÁT TRIỂN</h4>
+                    <p>Kiến tạo cộng đồng cùng chung đam mê yêu nghề, liên tục học tập và phát triển trong lĩnh vực kinh doanh đầu tư bất động sản.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Action("Index", "Phong")
+
+<section class="cities-list-sec">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Dạo Quanh Sài Gòn</h2>
+            <div class="sec-line">
+                <span class="sec-line1"></span>
+                <span class="sec-line2"></span>
+            </div>
+            <p>Khui vực nổi bật, Giá Rẻ, Đẹp, Gần Trung Tâm</p>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="partners-slider owl-carousel">
+                    <div class="city-first-card">
+                        <div class="city-list">
+                            <div class="city-img">
+                                <img src="/Content/img/city-1.jpg" alt="City">
+                            </div>
+                            <div class="city-name ">
+                                <h5>Hồ Chí Minh</h5>
+                                <p>300 Phòng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-property-sec">
+    <div class="container">
+        <div class="partners-sec">
+            <div class="section-heading text-center">
+                <h2>ĐỐI TÁC TIÊU BIỂU</h2>
+                <div class="sec-line">
+                    <span class="sec-line1"></span>
+                    <span class="sec-line2"></span>
+                </div>
+                <p>Với sự hỗ trợ của đội ngũ chuyên viên tư vấn giàu kinh nghiệm giúp quý khách đạt được các mục tiêu cho sự phát triển và mở rộng thị trường kinh doanh</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="partners-slider owl-carousel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- đặt lịch hẹn -->
+@Html.Action("Index", "DatLichHen")
+<!-- quan tâm phòng -->
+<div class="modal fade" id="care-about" tabindex="-1" aria-labelledby="care-about">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="care-aboutTitle">QUAN TÂM PHÒNG</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmfollow" name="frmfollow" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="">
+                    <input type="hidden" name="District" id="District" value="">
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-">
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Họ và tên </label>
+                                <input required type="text" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Điện thoại </label>
+                                <input required type="number" name="phone" id="phone" class="form-control" placeholder="Nhập tên số điện thoại">
+                            </div>
+                        </div>
+                        <div class="col-lg12 col-12">
+                            <div class="form-group">
+                                <label>Ghi chú thêm</label>
+                                <textarea class="form-control" name="note" id="note" rows="10" placeholder="Nhập ghi chú nếu có..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <button type="button" class="btn btn-block btn-success btn-save">
+                                GỬI THÔNG TIN
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+﻿@model IEnumerable<RentForRoom.DBContext.tbChiTietPhong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN PHÒNG</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DANH SÁCH THÔNG TIN PHÒNG</h5>
+                        <a class="btn btn-success" href="/Admin/AChiTietPhongs/Create">THÊM MỚI</a>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã Tài Khoản
+                                </th>
+                                <th>
+                                    Địa Chỉ
+                                </th>
+                                <th>
+                                    Thành Phố
+                                </th>
+                                <th>
+                                    Giá Phòng
+                                </th>
+                                <th>
+                                    Trạng Thái
+                                </th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.MaTaiKhoan.HasValue && item.MaTaiKhoan.Value != 0)
+                                    {
+                                        @Html.Action("GetMaTaiKhoanName", "AChiTietPhongs", new { id = item.MaTaiKhoan })
+                                    }
+                                    else
+                                    {
+                                        <text>(Chưa có thông tin)</text>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td>
+                                    @Html.Action("GetThanhPhoName", "AChiTietPhongs", new { id = item.IDTP })
+                                </td>
+                                <td>
+                                    @(@item.GiaThue / 1000000) triệu/th
+                                </td>
+                                <td class="custom-padding">
+                                    <label class="switch">
+                                        <input type="checkbox" class="toggle-status" data-id="@item.IDPhong" @(item.TrangThaiXuLy == false ? "" : "checked") />
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>
+                                <td>
+                                    <a href="/Admin/AChiTietPhongs/Edit/@item.IDPhong"><i class="bi bi-pencil-square"></i></a> |
+                                    <a href="/Admin/AChiTietPhongs/Details/@item.IDPhong"><i class="ri-article-line"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+    input:checked + .slider {
+        background-color: #4CAF50; /* Màu xanh khi bật */
+    }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.toggle-status').change(function () {
+            var userId = $(this).data('id');
+            var newStatus = $(this).is(':checked') ? false : true; // Trạng thái mới
+
+            $.ajax({
+                url: '/Admin/AChiTietPhongs/UpdateStatus',
+                type: 'POST',
+                data: { id: userId, hide: newStatus },
+                success: function (response) {
+                    // Không làm gì nếu thành công
+                },
+                error: function () {
+                    // Không làm gì nếu lỗi
+                }
+            });
+        });
+    });
+</script>

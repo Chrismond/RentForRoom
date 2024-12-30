@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<div class="section blog-section">
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="loginbox">
+                <div class="login-auth">
+                    <div class="login-auth-wrap">
+                        <h1>Xin chào!!! Chào mừng bạn trở lại.</h1>
+                        <form id="registerForm" action="/Login/SignIn" class="validate-form" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="fHGgQbJQKK7K16YfDylKo9pfNXENMp10dQIYkWL2">
+                            <div class="form-group">
+                                <label class="form-label">Email đăng nhập <span>*</span></label>
+                                <input type="text" class="form-control" tabindex="1" value="@(!string.IsNullOrEmpty(Request["Gmail"]) ? Request["Gmail"] : "")"
+                                       autocomplete="off" id="login_account" name="Gmail" placeholder="Email đăng nhập của bạn">
+                                @if (!string.IsNullOrEmpty(ViewBag.EmailError))
+                                {
+                                    <span style="color: red;">@ViewBag.EmailError</span>
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Mật khẩu <span>*</span></label>
+                                <div class="pass-group">
+                                    <input type="password" autocomplete="off" name="MatKhau" class="form-control pass-input" id="login_pwd" tabindex="2" placeholder="Mật khẩu">
+                                    @if (!string.IsNullOrEmpty(ViewBag.PasswordError))
+                                    {
+                                        <span style="color: red;">@ViewBag.PasswordError</span>
+                                    }
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-light w-100 btn-size">Đăng nhập</button>
+                            <div class="text-center dont-have">Bạn chưa có tài khoản? <a href="/Login/Register">Đăng ký tại đây</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $("#login_account").val("");
+    document.getElementById("login_account").value = "";
+    document.getElementById("login_pwd").value = "";
+</script>
+<script>
+    $("#login_pwd").val("");
+</script>

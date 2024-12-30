@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLNhaTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAlbum">
+          <Key>
+            <PropertyRef Name="IDAlbum" />
+          </Key>
+          <Property Name="IDAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPhong" Type="int" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbBanner">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Name="IDBanner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="300" />
+          <Property Name="HinhBanner" Type="varchar" MaxLength="200" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbChiTietPhong">
+          <Key>
+            <PropertyRef Name="IDPhong" />
+          </Key>
+          <Property Name="IDPhong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTaiKhoan" Type="int" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDPhuong" Type="int" />
+          <Property Name="IDQuan" Type="int" />
+          <Property Name="IDTP" Type="int" />
+          <Property Name="GiaThue" Type="float" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="300" />
+          <Property Name="LinkBai" Type="varchar" MaxLength="300" />
+          <Property Name="GioGiac" Type="nvarchar" MaxLength="150" />
+          <Property Name="LinkMap" Type="varchar" MaxLength="300" />
+          <Property Name="TienDien" Type="float" />
+          <Property Name="TienNuoc" Type="float" />
+          <Property Name="TienDichVụ" Type="float" />
+          <Property Name="CuaSoBanCong" Type="bit" />
+          <Property Name="WC" Type="bit" />
+          <Property Name="KeBep" Type="bit" />
+          <Property Name="MayLanh" Type="int" />
+          <Property Name="Giuong" Type="int" />
+          <Property Name="TuDo" Type="int" />
+          <Property Name="Nem" Type="int" />
+          <Property Name="TuLanh" Type="int" />
+          <Property Name="BanGhe" Type="int" />
+          <Property Name="MayGiat" Type="bit" />
+          <Property Name="Sofa" Type="int" />
+          <Property Name="SoPhongNgu" Type="int" />
+          <Property Name="Thang" Type="bit" />
+          <Property Name="PhuongTien" Type="nvarchar" MaxLength="150" />
+          <Property Name="ThuCung" Type="bit" />
+          <Property Name="TienCoc" Type="bit" />
+          <Property Name="Hide" Type="bit" />
+          <Property Name="NoiBat" Type="bit" />
+          <Property Name="TrangThaiXuLy" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbDatLich">
+          <Key>
+            <PropertyRef Name="IDDatLich" />
+          </Key>
+          <Property Name="IDDatLich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPhong" Type="int" />
+          <Property Name="SoNguoiO" Type="int" />
+          <Property Name="SoLuongXe" Type="int" />
+          <Property Name="NgayXemPhong" Type="date" />
+          <Property Name="NgayChuyenVao" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="ThuCung" Type="bit" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="150" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbGioiThieu">
+          <Key>
+            <PropertyRef Name="IDGioiThieu" />
+          </Key>
+          <Property Name="IDGioiThieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="150" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+          <Property Name="TieuDeDanhSach" Type="nvarchar" MaxLength="150" />
+          <Property Name="NoiDungDanhSach" Type="nvarchar" MaxLength="150" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbQuanHuyen">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDTP" Type="int" />
+          <Property Name="TenQuan" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDQuan" Type="int" Nullable="false" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbQuyen">
+          <Key>
+            <PropertyRef Name="IDQuyen" />
+          </Key>
+          <Property Name="IDQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="150" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbTinhThanhPho">
+          <Key>
+            <PropertyRef Name="IDTP" />
+          </Key>
+          <Property Name="IDTP" Type="int" Nullable="false" />
+          <Property Name="TenTP" Type="nvarchar" MaxLength="150" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbUser">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTaiKhoan" Type="int" />
+          <Property Name="Role" Type="int" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="150" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="150" />
+          <Property Name="Gmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="200" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbXaPhuong">
+          <Key>
+            <PropertyRef Name="IDPhuong" />
+          </Key>
+          <Property Name="IDQuan" Type="int" />
+          <Property Name="TenPhuong" Type="nvarchar" MaxLength="150" />
+          <Property Name="IDPhuong" Type="int" Nullable="false" />
+          <Property Name="Hide" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="QLNhaTroModelStoreContainer">
+          <EntitySet Name="tbAlbum" EntityType="Self.tbAlbum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbChiTietPhong" EntityType="Self.tbChiTietPhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDatLich" EntityType="Self.tbDatLich" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbGioiThieu" EntityType="Self.tbGioiThieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbQuanHuyen" EntityType="Self.tbQuanHuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbQuyen" EntityType="Self.tbQuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbTinhThanhPho" EntityType="Self.tbTinhThanhPho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUser" EntityType="Self.tbUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbXaPhuong" EntityType="Self.tbXaPhuong" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLNhaTroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbGioiThieu">
+          <Key>
+            <PropertyRef Name="IDGioiThieu" />
+          </Key>
+          <Property Name="IDGioiThieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TieuDeDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungDanhSach" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="QLNhaTroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbGioiThieux" EntityType="Self.tbGioiThieu" />
+          <EntitySet Name="tbQuanHuyens" EntityType="QLNhaTroModel.tbQuanHuyen" />
+          <EntitySet Name="tbTinhThanhPhoes" EntityType="QLNhaTroModel.tbTinhThanhPho" />
+          <EntitySet Name="tbXaPhuongs" EntityType="QLNhaTroModel.tbXaPhuong" />
+          <EntitySet Name="tbQuyens" EntityType="QLNhaTroModel.tbQuyen" />
+          <EntitySet Name="tbUsers" EntityType="QLNhaTroModel.tbUser" />
+          <EntitySet Name="tbBanners" EntityType="QLNhaTroModel.tbBanner" />
+          <EntitySet Name="tbAlbums" EntityType="QLNhaTroModel.tbAlbum" />
+          <EntitySet Name="tbDatLiches" EntityType="QLNhaTroModel.tbDatLich" />
+          <EntitySet Name="tbChiTietPhongs" EntityType="QLNhaTroModel.tbChiTietPhong" />
+        </EntityContainer>
+        <EntityType Name="tbQuanHuyen">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDTP" Type="Int32" />
+          <Property Name="TenQuan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDQuan" Type="Int32" Nullable="false" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbTinhThanhPho">
+          <Key>
+            <PropertyRef Name="IDTP" />
+          </Key>
+          <Property Name="IDTP" Type="Int32" Nullable="false" />
+          <Property Name="TenTP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbXaPhuong">
+          <Key>
+            <PropertyRef Name="IDPhuong" />
+          </Key>
+          <Property Name="IDQuan" Type="Int32" />
+          <Property Name="TenPhuong" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDPhuong" Type="Int32" Nullable="false" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbQuyen">
+          <Key>
+            <PropertyRef Name="IDQuyen" />
+          </Key>
+          <Property Name="IDQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbUser">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTaiKhoan" Type="Int32" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="SDT" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbBanner">
+          <Key>
+            <PropertyRef Name="IDBanner" />
+          </Key>
+          <Property Name="IDBanner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="HinhBanner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbAlbum">
+          <Key>
+            <PropertyRef Name="IDAlbum" />
+          </Key>
+          <Property Name="IDAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPhong" Type="Int32" />
+          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbDatLich">
+          <Key>
+            <PropertyRef Name="IDDatLich" />
+          </Key>
+          <Property Name="IDDatLich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPhong" Type="Int32" />
+          <Property Name="SoNguoiO" Type="Int32" />
+          <Property Name="SoLuongXe" Type="Int32" />
+          <Property Name="NgayXemPhong" Type="DateTime" Precision="0" />
+          <Property Name="NgayChuyenVao" Type="DateTime" Precision="0" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThuCung" Type="Boolean" />
+          <Property Name="HoTen" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Hide" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbChiTietPhong">
+          <Key>
+            <PropertyRef Name="IDPhong" />
+          </Key>
+          <Property Name="IDPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTaiKhoan" Type="Int32" />
+          <Property Name="TieuDe" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IDPhuong" Type="Int32" />
+          <Property Name="IDQuan" Type="Int32" />
+          <Property Name="IDTP" Type="Int32" />
+          <Property Name="GiaThue" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="LinkBai" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="GioGiac" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LinkMap" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TienDien" Type="Double" />
+          <Property Name="TienNuoc" Type="Double" />
+          <Property Name="TienDichVụ" Type="Double" />
+          <Property Name="CuaSoBanCong" Type="Boolean" />
+          <Property Name="WC" Type="Boolean" />
+          <Property Name="KeBep" Type="Boolean" />
+          <Property Name="MayLanh" Type="Int32" />
+          <Property Name="Giuong" Type="Int32" />
+          <Property Name="TuDo" Type="Int32" />
+          <Property Name="Nem" Type="Int32" />
+          <Property Name="TuLanh" Type="Int32" />
+          <Property Name="BanGhe" Type="Int32" />
+          <Property Name="MayGiat" Type="Boolean" />
+          <Property Name="Sofa" Type="Int32" />
+          <Property Name="SoPhongNgu" Type="Int32" />
+          <Property Name="Thang" Type="Boolean" />
+          <Property Name="PhuongTien" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ThuCung" Type="Boolean" />
+          <Property Name="TienCoc" Type="Boolean" />
+          <Property Name="Hide" Type="Boolean" />
+          <Property Name="NoiBat" Type="Boolean" />
+          <Property Name="TrangThaiXuLy" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLNhaTroModelStoreContainer" CdmEntityContainer="QLNhaTroEntities">
+          <EntitySetMapping Name="tbGioiThieux">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbGioiThieu">
+              <MappingFragment StoreEntitySet="tbGioiThieu">
+                <ScalarProperty Name="IDGioiThieu" ColumnName="IDGioiThieu" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="TieuDeDanhSach" ColumnName="TieuDeDanhSach" />
+                <ScalarProperty Name="NoiDungDanhSach" ColumnName="NoiDungDanhSach" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbQuanHuyens">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbQuanHuyen">
+              <MappingFragment StoreEntitySet="tbQuanHuyen">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+                <ScalarProperty Name="TenQuan" ColumnName="TenQuan" />
+                <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTinhThanhPhoes">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbTinhThanhPho">
+              <MappingFragment StoreEntitySet="tbTinhThanhPho">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="TenTP" ColumnName="TenTP" />
+                <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbXaPhuongs">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbXaPhuong">
+              <MappingFragment StoreEntitySet="tbXaPhuong">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
+                <ScalarProperty Name="TenPhuong" ColumnName="TenPhuong" />
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbQuyens">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbQuyen">
+              <MappingFragment StoreEntitySet="tbQuyen">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+                <ScalarProperty Name="IDQuyen" ColumnName="IDQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsers">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbUser">
+              <MappingFragment StoreEntitySet="tbUser">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBanners">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbBanner">
+              <MappingFragment StoreEntitySet="tbBanner">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="HinhBanner" ColumnName="HinhBanner" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="IDBanner" ColumnName="IDBanner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAlbums">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbAlbum">
+              <MappingFragment StoreEntitySet="tbAlbum">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+                <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDatLiches">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbDatLich">
+              <MappingFragment StoreEntitySet="tbDatLich">
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="NgayChuyenVao" ColumnName="NgayChuyenVao" />
+                <ScalarProperty Name="NgayXemPhong" ColumnName="NgayXemPhong" />
+                <ScalarProperty Name="SoLuongXe" ColumnName="SoLuongXe" />
+                <ScalarProperty Name="SoNguoiO" ColumnName="SoNguoiO" />
+                <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+                <ScalarProperty Name="IDDatLich" ColumnName="IDDatLich" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbChiTietPhongs">
+            <EntityTypeMapping TypeName="QLNhaTroModel.tbChiTietPhong">
+              <MappingFragment StoreEntitySet="tbChiTietPhong">
+                <ScalarProperty Name="TrangThaiXuLy" ColumnName="TrangThaiXuLy" />
+                <ScalarProperty Name="NoiBat" ColumnName="NoiBat" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+                <ScalarProperty Name="TienCoc" ColumnName="TienCoc" />
+                <ScalarProperty Name="ThuCung" ColumnName="ThuCung" />
+                <ScalarProperty Name="PhuongTien" ColumnName="PhuongTien" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="SoPhongNgu" ColumnName="SoPhongNgu" />
+                <ScalarProperty Name="Sofa" ColumnName="Sofa" />
+                <ScalarProperty Name="MayGiat" ColumnName="MayGiat" />
+                <ScalarProperty Name="BanGhe" ColumnName="BanGhe" />
+                <ScalarProperty Name="TuLanh" ColumnName="TuLanh" />
+                <ScalarProperty Name="Nem" ColumnName="Nem" />
+                <ScalarProperty Name="TuDo" ColumnName="TuDo" />
+                <ScalarProperty Name="Giuong" ColumnName="Giuong" />
+                <ScalarProperty Name="MayLanh" ColumnName="MayLanh" />
+                <ScalarProperty Name="KeBep" ColumnName="KeBep" />
+                <ScalarProperty Name="WC" ColumnName="WC" />
+                <ScalarProperty Name="CuaSoBanCong" ColumnName="CuaSoBanCong" />
+                <ScalarProperty Name="TienDichVụ" ColumnName="TienDichVụ" />
+                <ScalarProperty Name="TienNuoc" ColumnName="TienNuoc" />
+                <ScalarProperty Name="TienDien" ColumnName="TienDien" />
+                <ScalarProperty Name="LinkMap" ColumnName="LinkMap" />
+                <ScalarProperty Name="GioGiac" ColumnName="GioGiac" />
+                <ScalarProperty Name="LinkBai" ColumnName="LinkBai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="GiaThue" ColumnName="GiaThue" />
+                <ScalarProperty Name="IDTP" ColumnName="IDTP" />
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+                <ScalarProperty Name="IDPhuong" ColumnName="IDPhuong" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+                <ScalarProperty Name="IDPhong" ColumnName="IDPhong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

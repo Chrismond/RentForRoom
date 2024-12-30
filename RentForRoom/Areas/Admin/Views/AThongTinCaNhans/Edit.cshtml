@@ -1,0 +1,150 @@
+﻿@model RentForRoom.DBContext.tbUser
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN KHÁCH HÀNG</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CHỈNH SỬA THÔNG TIN KHÁCH HÀNG</h5>
+
+                        <!-- General Form Elements -->
+                        <form action="/admin/AThongTinCaNhans/edit" method="post" enctype="multipart/form-data">
+                            @Html.HiddenFor(model => model.IDUser)
+                            @Html.HiddenFor(model => model.HinhAnh)
+                            <div class="row mb-3">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">Hình Ảnh</label>
+                                <div class="col-sm-10">
+                                    @if (string.IsNullOrEmpty(Model.HinhAnh))
+                                    {
+                                        Model.HinhAnh = "/Content/img/avatarfb.jpg";
+                                        <img src="@Model.HinhAnh" width="180" />
+
+                                    }
+                                    else
+                                    {
+                                        <img src="@Model.HinhAnh" width="180" />}
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputNumber" class="col-sm-2 col-form-label">Cập Nhật Hình Ảnh</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="file" name="Editfile" id="formFile">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Họ Tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.HoTen" name="HoTen" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Số Điện Thoại</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.SDT" name="SDT" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.Gmail" name="Gmail" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Mật Khẩu</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.MatKhau" name="MatKhau" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Quyền Hạn</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="Role">
+                                        @Html.Raw(Html.Action("GetPhanQuyen", "AThongTinCaNhans", new { id = @Model.Role }))
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Trạng Thái</label>
+                                <div class="col-sm-2">
+                                    <select name="Hide" class="form-control">
+                                        <option value="true" @(Model.Hide == true ? "selected" : "")>Tạm Ngưng</option>
+                                        <option value="false" @(Model.Hide == false ? "selected" : "")>Còn Hoạt Động</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                                    <a href="/admin/AThongTinCaNhans" class="btn btn-danger"> Quay Lại</a>
+                                </div>
+                            </div>
+
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+    <script>
+        function loadQuanHuyen() {
+            var idThanhPho = document.getElementById("IDThanhPho").value;
+
+            if (!idThanhPho) {
+                // Nếu không có thành phố được chọn, reset danh sách quận
+                document.getElementById("IDQuan").innerHTML = "<option value=''>----- Chọn Quận/Huyện -----</option>";
+                return;
+            }
+
+            fetch(`/HomePage/GetDanhSachQuan?idThanhPho=${idThanhPho}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("IDQuan").innerHTML = data; // Cập nhật dropdown quận
+                })
+                .catch(error => {
+                    console.error("Lỗi khi tải danh sách quận:", error);
+                    document.getElementById("IDQuan").innerHTML = "<option value=''>----- Lỗi khi tải -----</option>";
+                });
+        }
+        //
+        function loadPhuongXa() {
+            var idQuan = document.getElementById("IDQuan").value;
+
+            if (!idQuan) {
+                // Nếu không có quận được chọn, reset danh sách phường
+                document.getElementById("IDPhuong").innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
+                return;
+            }
+
+            fetch(`/HomePage/GetDanhSachPhuong?idQuan=${idQuan}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("IDPhuong").innerHTML = data; // Cập nhật dropdown quận
+                })
+                .catch(error => {
+                    console.error("Lỗi khi tải danh sách quận:", error);
+                    document.getElementById("IDPhuong").innerHTML = "<option value=''>----- Lỗi khi tải -----</option>";
+                });
+        }
+
+    </script>
+
+</main>

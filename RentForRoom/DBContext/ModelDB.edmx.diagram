@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8bb364da8f164ebeb26767613db90483" Name="Diagram1" ZoomLevel="87">
+        <EntityTypeShape EntityType="QLNhaTroModel.tbGioiThieu" Width="1.5" PointX="3.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbQuanHuyen" Width="1.5" PointX="5.375" PointY="2.25" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbTinhThanhPho" Width="1.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbXaPhuong" Width="1.5" PointX="5.375" PointY="4.125" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbQuyen" Width="1.5" PointX="2.125" PointY="4" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbUser" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbBanner" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbAlbum" Width="1.5" PointX="2.125" PointY="5.75" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbDatLich" Width="1.5" PointX="2.125" PointY="0.5" />
+        <EntityTypeShape EntityType="QLNhaTroModel.tbChiTietPhong" Width="1.5" PointX="0.5" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

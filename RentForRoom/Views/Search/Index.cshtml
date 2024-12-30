@@ -1,0 +1,171 @@
+﻿@model RentForRoom.Models.PhongModel
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="banner-search">
+            <div class="tab-content" id="bannerTabContent">
+                <div class="tab-pane fade show active" id="buy_property" role="tabpanel" aria-labelledby="buy-property">
+                    <div class="banner-tab-property">
+                        <form name="frmsearchroom" id="frmsearchroom" action="/Search/SearchUsers" method="get">
+                            <div class="show-list">
+                                <div class="row">
+                                    <div class="col-lg-11 col-10">
+                                        <div class="review-form">
+                                            <input id="key" name="k" value="" type="text" class="form-control" placeholder="Nhập từ khóa tên host, tên đường, tiêu đề....">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-2">
+                                        <div class="review-form">
+                                            <div class="banner-property-grid">
+                                                <button type="button" id="toggle-filters" class="btn-default">
+                                                    <span><i class="fa fa-fw fa-sliders"></i></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-12">
+                                        <div class="additional-filters" style="display: none;">
+                                            <div class="row">
+                                                <!-- Thành phố -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <select class="form-control" name="IDTP" id="IDThanhPho" onchange="loadQuanHuyen()">
+                                                            @Html.Raw(ViewBag.ThanhPhoList)
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Quận/Huyện -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <select class="form-control" name="IDQuan" id="IDQuan" onchange="loadPhuongXa()" disabled>
+                                                            <option value="">----- Chọn Quận/Huyện -----</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Phường/Xã -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <select class="form-control" name="IDPhuong" id="IDPhuong" disabled>
+                                                            <option value="">----- Chọn Phường/Xã -----</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Khoảng giá -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <select class="select" id="price" name="p"  data-minimum-results-for-search="Infinity">
+                                                            <option value="">Khoảng giá</option>
+                                                            <option value="1">Dưới 3 triệu</option>
+                                                            <option value="2">Từ 3tr đến 5tr</option>
+                                                            <option value="3">Từ 5tr đến 7tr</option>
+                                                            <option value="4">Trên 7 triệu</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Trạng thái -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <select class="select" id="status" name="st" data-minimum-results-for-search="Infinity">
+                                                            <option value="">Trạng thái</option>
+                                                            <option value="1">Nổi bật</option>
+                                                            <option value="2">Phòng trống</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Nút tìm kiếm -->
+                                                <div class="col-lg-2 col-6">
+                                                    <div class="review-form">
+                                                        <button class="btn-primary" type="submit">
+                                                            <span><i class="fa fa-fw fa-search"></i> TÌM PHÒNG</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kết quả tìm kiếm sẽ hiển thị ở đây -->
+<div id="search-results">
+    <div id="noResults" style="display: none;" class="alert alert-info">Không tìm thấy kết quả phù hợp.</div>
+    <div id="resultContainer"></div>
+</div>
+
+
+<script>
+
+    document.getElementById("frmsearchroom").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Lấy dữ liệu form
+        var formData = new FormData(this);
+        var queryString = new URLSearchParams(formData).toString();
+
+        // Điều hướng đến trang mới với dữ liệu tìm kiếm trong URL
+        window.location.href = `/Search/SearchUsers?${queryString}`;
+    });
+
+    function loadQuanHuyen() {
+        var idThanhPho = document.getElementById("IDThanhPho").value;
+        fetch(`/Search/LoadQuanHuyen?idThanhPho=${idThanhPho}`)
+            .then(response => response.json())
+            .then(data => {
+                var quanSelect = document.getElementById("IDQuan");
+                var phuongSelect = document.getElementById("IDPhuong");
+
+                quanSelect.innerHTML = "<option value=''>----- Chọn Quận/Huyện -----</option>";
+                phuongSelect.innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
+                phuongSelect.disabled = true;
+
+                if (data.length > 0) {
+                    quanSelect.disabled = false;
+                    data.forEach(quan => {
+                        var option = document.createElement("option");
+                        option.value = quan.IDQuan;
+                        option.textContent = quan.TenQuan;
+                        quanSelect.appendChild(option);
+                    });
+                } else {
+                    quanSelect.disabled = true;
+                }
+            });
+    }
+
+    function loadPhuongXa() {
+        var idQuan = document.getElementById("IDQuan").value;
+        fetch(`/Search/LoadXaPhuong?idQuan=${idQuan}`)
+            .then(response => response.json())
+            .then(data => {
+                var phuongSelect = document.getElementById("IDPhuong");
+                phuongSelect.innerHTML = "<option value=''>----- Chọn Phường/Xã -----</option>";
+
+                if (data.length > 0) {
+                    phuongSelect.disabled = false;
+                    data.forEach(phuong => {
+                        var option = document.createElement("option");
+                        option.value = phuong.IDPhuong;
+                        option.textContent = phuong.TenPhuong;
+                        phuongSelect.appendChild(option);
+                    });
+                } else {
+                    phuongSelect.disabled = true;
+                }
+            });
+    }
+</script>

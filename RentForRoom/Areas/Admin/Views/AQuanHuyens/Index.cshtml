@@ -1,0 +1,82 @@
+﻿@model IEnumerable<RentForRoom.DBContext.tbQuanHuyen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN QUẬN/HUYỆN</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DANH SÁCH CÁC THÔNG TIN QUẬN/HUYỆN</h5>
+                        <a class="btn btn-success" href="/Admin/AQuanHuyens/Create">THÊM MỚI</a>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Thành Phố
+                                </th>
+                                <th>
+                                    Quận/Huyện
+                                </th>
+                                <th>
+                                    Trạng Thái
+                                </th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.IDTP.HasValue && item.IDTP.Value != 0)
+                                    {
+                                        @Html.Action("GetThanhPhoName", "AQuanHuyens", new { id = item.IDTP })
+                                    }
+                                    else
+                                    {
+                                        <text>(Chưa có thông tin)</text>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.Action("GetQuanHuyenName", "AQuanHuyens", new { id = item.IDQuan })
+
+                                </td>
+                                <td class="custom-padding">
+                                    @if (item.Hide != true)
+                                    {
+                                        <p>         Hiện</p>
+                                    }
+                                    else
+                                    {
+                                        <p>   ẨN </p>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="/Admin/AQuanHuyens/Edit/@item.IDQuan"><i class="bi bi-pencil-square"></i></a> |
+                                    <a href="/Admin/AQuanHuyens/Details/@item.IDQuan"><i class="ri-article-line"></i></a> |
+                                    <a href="/Admin/AQuanHuyens/Delete/@item.IDQuan"><i class="ri-delete-bin-6-line"></i></a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+</main>

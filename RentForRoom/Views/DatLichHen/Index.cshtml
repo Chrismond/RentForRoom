@@ -1,0 +1,437 @@
+﻿@model RentForRoom.Models.DatLichModel
+
+
+<div class="modal fade" id="make-an-appointment" tabindex="-1" aria-labelledby="make-an-appointment">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="make-an-appointmentTitle">NHẬP THÔNG TIN ĐẶT LỊCH HẸN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmbooking" name="frmbooking" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="">
+                    @*<input type="hidden" name="District" id="District" value="">*@
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="room-info">
+                                <img class="pro-img" src="" alt=" ">
+                                <h3 class="pro-name"></h3>
+
+                                <p class="price"><b>GIÁ THUÊ PHÒNG: </b><b class="pro-price"></b> <span>/ tháng</span></p>
+                                <p class="pro-addres"><b>Địa chỉ:</b></p>
+                                <p>Map: <a href="#" id="mapLink" class="mapLink"></a></p>
+                                <div class="row">
+                                    <p>
+                                        <span>⚡Giá điện: <b class="pro-Dien"></b><b> ₫/Kwh</b> </span>
+                                        <span>&nbsp;💧Giá nước: <b class="pro-Nuoc"></b><b>.000 ₫/Người</b> </span>
+
+                                    </p>
+                                    <div class="col-lg-12">
+                                        <p><span>🌾Phí quản lý: <b class="pro-PQL"></b><b>.000 ₫/Phòng</b></span></p>
+                                    </div>
+                                </div>
+
+                                <p><i><b>Ghi chú:</b> giá điện, nước có thể tăng hoặc giảm tùy theo thời giá</i></p>
+                                <h7><strong>Tiện Ích Phòng</strong></h7>
+                                <p>
+                                    <f>☑ WC </f>
+                                    <span class="pro-WC"></span>
+
+
+                                    <f>&nbsp; ☑ </f>
+                                    <span class="pro-DP"></span>
+
+                                    <f>&nbsp; ☑ Kệ bếp</f>
+                                    <span class="pro-KB"></span>
+
+                                </p>
+                                <h7><strong>Tiện Nghi Phòng</strong></h7>
+                                <p>
+                                    <f>☑ Máy Lạnh x</f>
+                                    <span class="pro-ML"></span>
+                                    <f>&nbsp; ☑ Tủ Đồ x</f>
+                                    <span class="pro-TD"></span>
+                                    <f>&nbsp; ☑ Tủ Lạnh x</f>
+                                    <span class="pro-TL"></span>
+
+                                </p>
+                                <p>
+                                    <f>☑ Giường x</f>
+                                    <span class="pro-Giuong"></span>
+                                    <f>&nbsp; ☑ Nệm x</f>
+                                    <span class="pro-Nem"></span>
+                                    <f>&nbsp; ☑ Bàn Ghế x</f>
+                                    <span class="pro-BG"></span>
+
+                                </p>
+                                <p>
+                                    <f>☑ Sofa x</f>
+                                    <span class="pro-SF"></span>
+                                    <f>&nbsp; ☑ Số Phòng Ngủ x</f>
+                                    <span class="pro-SPN"></span>
+                                </p>
+                                <h7><strong>Tiện Ích Nhà</strong></h7>
+                                <p>
+                                    <f>☑ Thang </f>
+                                    <span class="pro-Thang"></span>
+
+                                    <f>&nbsp; ☑ Máy giặt</f>
+                                    <span class="pro-MG"></span>
+
+                                    <f>&nbsp; ☑ Thú cưng</f>
+                                    <span class="pro-TC"></span>
+                                </p>
+                                <p>
+                                    <f>☑ Tiền cọc </f>
+                                    <span class="pro-Coc"></span>
+
+                                    <f>&nbsp; ☑ Phương tiện</f>
+                                    <span class="pro-PT"></span>
+
+                                    <f>&nbsp; ☑ Giờ giấc</f>
+                                    <span class="pro-Gio"></span>
+                                </p>
+                                <hr />
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Họ tên </label>
+                                        <input required type="text" name="HoTen" id="HoTen" class="form-control" placeholder="Nhập tên của bạn">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Điện thoại </label>
+                                        <input required type="number" name="SDT" id="SDT" class="form-control" placeholder="Nhập tên số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số người ở </label>
+                                        <select class="select" style="width: 100%;" name="SoNguoiO" id="SoNguoiO" data-minimum-results-for-search="Infinity" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số lượng xe</label>
+                                        <select required class="select" name="SoLuongXe" id="SoLuongXe" data-minimum-results-for-search="Infinity" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Nuôi thú cưng</label>
+                                        <select class="select" name="ThuCung" id="ThuCung" data-minimum-results-for-search="Infinity">
+                                            <option value="false">Không</option>
+                                            <option value="true">Có</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày dự kiến chuyển vào ở</label>
+                                        <input required type="text" class="form-control date" name="NgayChuyenVao" id="NgayChuyenVao" value="2024-12-17" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>Thời gian thuê</label>
+                                        <select class="select" name="RentalTerm" id="RentalTerm">
+                                            <option value="6 tháng">6 tháng</option>
+                                            <option value="12 tháng">12 tháng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày hẹn xem phòng</label>
+                                        <input required type="text" class="form-control datetime" name="NgayXemPhong" id="NgayXemPhong" value="2024-12-17 12:52:49" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>ZP dẫn đề xuất</label>
+                                        <input type="text" class="form-control" name="ZPAdvise" id="ZPAdvise">
+                                    </div>
+                                </div>
+                                <div class="col-lg12 col-12">
+                                    <div class="form-group">
+                                        <label>Ghi chú thêm</label>
+                                        <textarea class="form-control" rows="9" name="GhiChu" id="GhiChu"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12">
+                                    <button type="button" class="btn btn-block btn-success btn-save">
+                                        XÁC NHẬN ĐẶT LỊCH XEM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Lấy giá trị từ class 'pro-WC'
+    //const wcValue = document.querySelector('.pro-WC').textContent.trim();
+
+    //// Kiểm tra và hiển thị kết quả
+    //if (wcValue === "true") {
+    //    document.getElementById('result').textContent = "chung";
+    //} else if (wcValue === "false") {
+    //    document.getElementById('result').textContent = "riêng";
+    //}
+
+
+
+    //const dp = document.querySelector('.pro-DP').textContent.trim();
+
+    //// Kiểm tra và hiển thị kết quả
+    //if (dp === "null") {
+    //    document.getElementById('result1').textContent = "Thường";
+    //}
+    //else if (dp === "true") {
+    //    document.getElementById('result1').textContent = "Cửa sổ";
+    //} else if (dp === "false") {
+    //    document.getElementById('result1').textContent = "Ban Công";
+    //}
+
+    //const kb = document.querySelector('.pro-KB').textContent.trim();
+
+    //// Kiểm tra và hiển thị kết quả
+    //if (kb === "true") {
+    //    document.getElementById('result2').textContent = "chung";
+    //} else if (kb === "false") {
+    //    document.getElementById('result2').textContent = "riêng";
+    //}
+
+    //const t = document.querySelector('.pro-Thang').textContent.trim();
+
+    //const resultText = t === "true" ? "bộ" : "máy";
+    //document.getElementById('result3').textContent = resultText;
+    // Kiểm tra và hiển thị kết quả
+    //if (t === "true") {
+    //    document.getElementById('result3').textContent = "bộ";
+    //} else if (t === "false") {
+    //    document.getElementById('result3').textContent = "máy";
+    //}
+
+    //$('.product').click(function () {
+    //    // Lấy giá trị true/false từ thuộc tính 'data-thang' của sản phẩm đã được click
+    //    const thangValueFromProduct = $(this).data('thang');  // true hoặc false
+
+    //    // Gán giá trị vào class 'pro-Thang'
+    //    $('#frmbooking .pro-Thang').text(thangValueFromProduct);  // Cập nhật giá trị
+
+    //    // Lấy giá trị mới từ class 'pro-Thang' và hiển thị kết quả
+    //    const thangValue = $('#frmbooking .pro-Thang').text().trim();
+
+    //    // So sánh và hiển thị kết quả
+    //    if (thangValue === "true") {
+    //        $('#result3').html("bộ");
+    //    } else if (thangValue === "false") {
+    //        $('#result3').html("máy");
+    //    }
+    //});
+
+
+    //const mg = document.querySelector('.pro-MG').textContent.trim();
+
+    //// Kiểm tra và hiển thị kết quả
+    //if (mg === "true") {
+    //    document.getElementById('result4').textContent = "chung";
+    //} else if (mg === "false") {
+    //    document.getElementById('result4').textContent = "riêng";
+    //}
+
+    //const tc = document.querySelector('.pro-TC').textContent.trim();
+
+    //// Kiểm tra và hiển thị kết quả
+    //if (tc === "false") {
+    //    document.getElementById('result5').textContent = "được nuôi";
+    //} else if (tc === "true") {
+    //    document.getElementById('result5').textContent = "không được";
+    //}
+
+
+
+</script>
+
+
+<!-- CSS cho hiệu ứng rung -->
+<!-- Hiệu ứng EROR -->
+<div id="hashtag-effect" class="hashtag-effect" style="display: none;">EROR</div>
+
+<!-- CSS cho hiệu ứng EROR và rung -->
+<style>
+    .shake {
+        animation: shake 0.6s;
+        animation-iteration-count: 3;
+    }
+
+    @@keyframes shake {
+        0%, 100% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-5px);
+        }
+
+        75% {
+            transform: translateX(5px);
+        }
+    }
+
+    .hashtag-effect {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 100px;
+        font-weight: bold;
+        color: red;
+        opacity: 0;
+        animation: pulse 1.5s infinite;
+    }
+
+    @@keyframes pulse {
+        0%, 100% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+</style>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    function Show() {
+        const contact = {
+            //SoNguoiO = ab.SoNguoiO,
+            //NgayXemPhong = ab.NgayXemPhong,
+            //GhiChu = ab.GhiChu,
+            //NgayChuyenVao = ab.NgayChuyenVao,
+            //HoTen = ab.HoTen,
+            //SDT = ab.SDT,
+            //Email = ab.Email,
+            //Hide = (bool)ab.Hide,
+            SoNguoiO: "",
+            NgayXemPhong: "",
+            NgayChuyenVao: "",
+            GhiChu: "",
+            HoTen: "",
+            SDT: "",
+            Email: "",
+        };
+        contact.SoNguoiO = $("#SoNguoiO").val();
+        contact.NgayXemPhong = $("#NgayXemPhong").val();
+        contact.NgayChuyenVao = $("#NgayChuyenVao").val();
+        contact.GhiChu = $("#GhiChu").val();
+        contact.HoTen = $("#HoTen").val();
+        contact.SDT = $("#SDT").val();
+        contact.Email = $("#Email").val();
+        $.ajax({
+            type: 'POST',
+            url: '/DatLichHen/GetJson',
+            data: { obj: contact },
+            success: function (data) {
+                if (data.SDT != null) {
+                    alert("Thực hiện thành công!");
+                    //pháo hoa
+                    fireConfetti();
+                    //xóa dữ liệu
+                    $("#SoNguoiO").val("");
+                    $("#NgayXemPhong").val("");
+                    $("#NgayChuyenVao").val("");
+                    $("#GhiChu").val("");
+                    $("#HoTen").val("");
+                    $("#SDT").val("");
+                    $("#Email").val("");
+                    hideHashtagEffect();
+                }
+                else {
+                    //alert("Thực hiện không thành công!");
+                    displayHashtagEffect("Thực hiện không thành công!"); // Hiển thị EROR khi có lỗi
+
+                }
+            },
+            error: function (ex) {
+                //alert("Khong thể thực hiện");
+                displayHashtagEffect("Khong thể thực hiện"); // Hiển thị EROR khi có lỗi
+
+            }
+        });
+        return false;
+    }
+    function XacNhan() {
+        let cf = confirm("Bạn có chắc thực hiện???");
+        if (cf) {
+            Show();
+        }
+        return false;
+    }
+    // Hàm tạo pháo hoa
+    function fireConfetti() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Hàm hiển thị EROR
+    function displayHashtagEffect(message) {
+        $("#hashtag-effect").text("EROR").show();
+        applyShakeEffect(); // Thêm hiệu ứng rung vào form
+        setTimeout(() => {
+            $("#hashtag-effect").fadeOut(1000);
+        }, 2000);
+    }
+
+    // Hàm ẩn EROR
+    function hideHashtagEffect() {
+        $("#hashtag-effect").fadeOut(1000); // Ẩn EROR
+    }
+
+    // Hàm thêm hiệu ứng rung vào form
+    function applyShakeEffect() {
+        const form = document.querySelector("form[name='c-form']");
+        form.classList.add("shake");
+
+        // Loại bỏ lớp shake sau khi hiệu ứng kết thúc
+        setTimeout(() => {
+            form.classList.remove("shake");
+        }, 1800); // Thời gian khớp với animation trong CSS
+    }
+</script>

@@ -1,0 +1,690 @@
+﻿@model RentForRoom.Models.PhongModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+<section class="buy-detailview">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="buy-details-col">
+                    <div class="rental-card">
+                        <div class="slider rental-slider">
+                            <div class="product-img">
+                                <a href="upload/data/news/63099675d0383d49d0.webp" data-fancybox="gallery">
+                                    <img src="63099675d0383d49d0.webp" alt="Phòng Cho Thuê Phòng Nguyễn Sỹ Sách, Q.Tân Bình - /Tây CTTA/ /HELTA/ - N6045- ID:2320 - HK MOTEL, 2536 - HK House QL">
+                                </a>
+                            </div>
+                            <div class="product-img">
+                                <a href="upload/data/news/63099675d03841caec.webp" data-fancybox="gallery">
+                                    <img src="63099675d03841caec.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                                </a>
+                            </div>
+                            <div class="product-img">
+                                <a href="upload/data/news/63099675d03843480d.webp" data-fancybox="gallery">
+                                    <img src="63099675d03843480d.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                                </a>
+                            </div>
+                            <div class="product-img">
+                                <a href="upload/data/news/63099675d03844c218.webp" data-fancybox="gallery">
+                                    <img src="63099675d03844c218.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="slider slider-nav-thumbnails">
+                            <div>
+                                <img src="63099675d0383d49d0.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                            </div>
+                            <div>
+                                <img src="63099675d03841caec.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                            </div>
+                            <div>
+                                <img src="63099675d03843480d.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                            </div>
+                            <div>
+                                <img src="63099675d03844c218.webp" alt="Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="feature-rating ">
+                        <div>
+                            <div class="featured is--orange">
+                                <span><i class="fa fa-fw fa-circle"></i> Tạm hết</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 theiaStickySidebar">
+                <div class="right-sidebar">
+                    <div class="page-title">
+                        <h3>
+                            Thuê Căn hộ mini  Phường 15  Quận Tân Bình N6045  P80368
+                            <span class="tooltipcommission">
+                                <i class="fa fa-fw fa-info-circle"></i>
+                                <span class="tooltiptext">0 - 0</span>
+                            </span>
+                        </h3>
+                        <p class="mb-0"><i class="fa fa-fw fa-clock-o"></i> Cập nhật:  2 tiếng  </p>
+                        <p class="mb-0"><i class="fa fa-fw fa-map-marker"></i> Địa chỉ gần: 77  Nguyễn Sỹ Sách, P.15, Q.Tân Bình</p>
+                        <p>
+                            <i class="fa fa-fw fa-home"></i> Căn hộ mini
+                            <spam data-bs-toggle="modal" data-bs-target="#call-history"><i class="fa fa-fw fa-info-circle"></i></spam>
+                            <spam data-bs-toggle="modal" data-bs-target="#report-a-problem"><i class="fa fa-fw fa-flag text-danger"></i></spam>
+                        </p>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4 class="card-title">Tiện ích phòng</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <ul class="amenities-list mb-1">
+                                <li><f>&#9745;</f> Cửa sổ trời</li>
+                                <li><f>&#9745;</f> WC riêng</li>
+                                <li><f>&#9745;</f> Kệ bếp</li>
+                                <li><f>&#9745;</f> Tách bếp</li>
+                            </ul>
+                        </div>
+                        <h4 class="card-title">Tiện nghi phòng</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <ul class="amenities-list mb-1">
+                                <li><f>&#9745;</f> Tủ đồ</li>
+                                <li><f>&#9745;</f> Nệm</li>
+                                <li><f>&#9745;</f> Tivi</li>
+                                <li><f>&#9745;</f> Sofa</li>
+                                <li><f>&#9745;</f> Máy giặt</li>
+                                <li><f>&#9745;</f> Quạt trần</li>
+                            </ul>
+                        </div>
+                        <h4 class="card-title">Tiện ích trong nhà</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <ul class="amenities-list mb-1">
+                                <li><f>&#9745;</f> Để xe trong nhà</li>
+                                <li><f>&#9745;</f> Khóa vân tay</li>
+                            </ul>
+                        </div>
+                        <h4 class="card-title">Tiện ích xung quanh</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <ul class="amenities-list mb-1">
+                            </ul>
+                        </div>
+                        <h4 class="card-title">Giá dịch vụ</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <ul class="amenities-list mb-1">
+                                <li> Giá điện: 3800 ₫ / kwh</li>
+                                <li> Giá nước: 80000 ₫ / người</li>
+                                <li> Phí quản lý: 100000 ₫</li>
+                                <li> Phí xe: 80000 ₫ / xe</li>
+                            </ul>
+                        </div>
+
+                        <h4 class="card-title">Ghi chú nhà</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <p></p><h1><strong>Cho nu&ocirc;i m&egrave;o, kh&ocirc;ng nu&ocirc;i ch&oacute;</strong></h1><p></p>
+                        </div>
+
+                        <h4 class="card-title">Ghi chú phòng</h4>
+                        <div id="amenities" class="card-collapse collapse show collapse-view">
+                            <p></p>
+                            <p style="font-size: 24px;margin-bottom: 5px;"><b class="pro-price">5,700,000đ ₫</b> <span>/ tháng</span></p>
+                            <p>Lưu ý: hình ảnh và nội thất thực tế có thể sẽ thay đổi chút ít do setup chưa kịp cập nhật</p>
+                        </div>
+                        <div class="review-form submit-btn mt-3">
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#make-an-appointment">
+                                        Đặt Lịch Hẹn
+                                    </button>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#care-about">
+                                        Quan tâm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapse-card mt-3">
+            <h4 class="card-title">
+                <a class="collapsed" data-bs-toggle="collapse" href="#about" aria-expanded="false">Chi tiết phòng</a>
+            </h4>
+            <div id="about" class="card-collapse collapse show">
+                <div class="about-agent collapse-view">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="similar-list">
+            <div class="section-heading">
+                <h2>Có thể bạn quan tâm</h2>
+                <div class="sec-line">
+                    <span class="sec-line1"></span>
+                    <span class="sec-line2"></span>
+                </div>
+                <p>ZinRooms cung cấp cho bạn nhiều lựa chọn đa dạng, từ sang trọng đến khách sạn bình dân</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="feature-property-sec for-rent p-0">
+                        <div class="rentfeature-slider owl-carousel">
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-62987" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/62987675ac196a2520.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.5 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-62987">
+                                                    Phòng  Cho thuê phòng 400, Âu Cơ, Phường 10, Quận Tân Bình, Hồ Chí Minh N11094 P80331
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 390, Âu Cơ, Phường 10, Quận Tân Bình, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>5.5 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63035" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/63035675bf760c6797.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63035">
+                                                    Phòng  Cho Thuê Phòng Lưu Nhân Chú, Quận Tân Bình - N1238 - ID:  1529,16 - Đức - Thảo  N1238 P80343
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 49 Lưu Nhân Chú, Phường 5, Tân Bình</p>
+                                            <p class="price-mb"><span>5.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63036" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/63036675bf85c7c77a.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>5.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63036">
+                                                    Phòng  Cho Thuê Phòng Hoàng Kế Viêm, Tân Bình - /Tây CTTA/ /CHDV TL TA/ - N4317- ID: 1529 - Thảo N4317 P80344
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 1 Hoàng Kế Viêm , Phường 12, Q. Tân Bình </p>
+                                            <p class="price-mb"><span>5.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-63039" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/63039675bfc2608826.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>7 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-63039">
+                                                    Phòng  Cho thuê phòng 340/6C,  Hoàng Văn Thụ, Phường 04, Quận Tân Bình, Hồ Chí Minh N11027 P80344
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 330,  Hoàng Văn Thụ, Phường 04, Quận Tân Bình, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>7 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    2 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-62860" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/62860675825432e5f5.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>6.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-62860">
+                                                    Phòng  Cho Thuê Phòng Bạch Đằng, Q.Tân Bình - /Tây CTTA/ - N5630 - ID: 2122, 809- C MÙI, Tuấn N5630 P80298
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> 8 Bạch Đằng, P.2, Q.Tân Bình</p>
+                                            <p class="price-mb"><span>6.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    3 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-col">
+                                <div class="product-custom">
+                                    <div class="profile-widget">
+                                        <a href="thue-phong-quan-tan-binh/phong-62862" class="property-img">
+                                            <div class="doc-img" style="background-image:url(upload/data/news/6286267582b8912c6a.webp)">
+                                                <div class="product-amount" style="display:none">
+                                                    <span>3.8 triệu <small>/Tháng</small></span>
+                                                </div>
+                                                <div class="feature-rating ">
+                                                    <div>
+                                                        <div class="featured is--green">
+                                                            <span><i class="fa fa-fw fa-circle"></i> Còn phòng</span>
+                                                        </div>
+                                                        <div class="new-featured item__hot">
+                                                            <span><i class="animated infinite rubberBand">HOT</i> Nổi bật</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="pro-content">
+                                            <h3 class="title">
+                                                <a href="thue-phong-quan-tan-binh/phong-62862">
+                                                    Phòng  Cho thuê phòng 175/26A, Ni Sư Huỳnh Liên, Phường 10, Quận Tân Bình, Hồ Chí Minh N4469 P80300
+                                                </a>
+                                            </h3>
+                                            <p><i class="fa fa-fw fa-map-marker"></i> , Ni Sư Huỳnh Liên, Phường 10, Quận Tân Bình, Hồ Chí Minh</p>
+                                            <p class="price-mb"><span>3.8 triệu <small>/Tháng</small></span></p>
+                                            <ul class="d-flex details">
+                                                <li>
+                                                    <i class="fa fa-fw fa-home"></i>
+                                                    Căn hộ mini
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-fw fa-clock-o"></i>
+                                                    3 tiếng
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- đặt lịch hẹn -->
+<div class="modal fade" id="make-an-appointment" tabindex="-1" aria-labelledby="make-an-appointment">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="make-an-appointmentTitle">NHẬP THÔNG TIN ĐẶT LỊCH HẸN</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmbooking" name="frmbooking" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="63099">
+                    <input type="hidden" name="District" id="District" value="766">
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-0/phong-63099">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="room-info">
+                                <img src="63099675d0383d49d0.webp" alt="Phòng  Cho Thuê Phòng Nguyễn Sỹ Sách, Q.Tân Bình - /Tây CTTA/ /HELTA/ - N6045- ID:2320 - HK MOTEL, 2536 - HK House QL">
+                                <h3>Phòng  Cho Thuê Phòng Nguyễn Sỹ Sách, Q.Tân Bình - /Tây CTTA/ /HELTA/ - N6045- ID:2320 - HK MOTEL, 2536 - HK House QL</h3>
+                                <p class="price"><b>GIÁ THUÊ PHÒNG: </b><b class="pro-price">5,700,000đ ₫</b> <span>/ tháng</span></p>
+                                <p class=""><b>Địa chỉ:</b>77  Nguyễn Sỹ Sách, P.15, Q.Tân Bình</p>
+                                <div class="row">
+                                    <div class="col-lg-3" style="display:none">
+                                        <p><b>Tối đa:</b> 0</p>
+                                    </div>
+                                    <div class="col-lg-9" style="display:none">
+                                        <p><b>Giá điện:</b> 3800 ₫ / kwh</p>
+                                    </div>
+                                    <div class="col-lg-12" style="display:none">
+                                        <p><b>Giá nước:</b> 80000 ₫ / người</p>
+                                    </div>
+                                </div>
+                                <p><i><b>Ghi chú:</b> giá điện, nước có thể tăng hoặc giảm tùy theo thời giá</i></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Họ tên </label>
+                                        <input required type="text" name="CustomerName" id="CustomerName" class="form-control" placeholder="Nhập tên của bạn">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Điện thoại </label>
+                                        <input required type="number" name="CustomerPhone" id="CustomerPhone" class="form-control" placeholder="Nhập tên số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số người ở </label>
+                                        <select class="select" style="width: 100%;" name="SlotTotal" id="SlotTotal">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Số lượng xe</label>
+                                        <select required class="select" name="VehicleTotal" id="VehicleTotal">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-4">
+                                    <div class="form-group">
+                                        <label>Nuôi thú cưng</label>
+                                        <select class="select" name="Pet" id="Pet">
+                                            <option value="Không">Không</option>
+                                            <option value="Có">Có</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày dự kiến chuyển vào ở</label>
+                                        <input required type="text" class="form-control datetime" name="EntryDate" id="EntryDate" value="2024-12-17 12:52:49">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>Thời gian thuê</label>
+                                        <select class="select" name="RentalTerm" id="RentalTerm">
+                                            <option value="6 tháng">6 tháng</option>
+                                            <option value="12 tháng">12 tháng</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6">
+                                    <div class="form-group">
+                                        <label>Ngày hẹn xem phòng</label>
+                                        <input required type="text" class="form-control datetime" name="AppointmentDate" id="AppointmentDate" value="2024-12-17 12:52:49">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-6" style="display:none">
+                                    <div class="form-group">
+                                        <label>ZP dẫn đề xuất</label>
+                                        <input type="text" class="form-control" name="ZPAdvise" id="ZPAdvise">
+                                    </div>
+                                </div>
+                                <div class="col-lg12 col-12">
+                                    <div class="form-group">
+                                        <label>Ghi chú thêm</label>
+                                        <textarea class="form-control" rows="9" name="CustomerNotes" id="CustomerNotes"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-12">
+                                    <button type="button" class="btn btn-block btn-success btn-save">
+                                        XÁC NHẬN ĐẶT LỊCH XEM
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- quan tâm phòng -->
+<div class="modal fade" id="care-about" tabindex="-1" aria-labelledby="care-about">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="care-aboutTitle">QUAN TÂM PHÒNG</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmfollow" name="frmfollow" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="roomid" id="roomid" value="63099">
+                    <input type="hidden" name="District" id="District" value="766">
+                    <input type="hidden" name="roomurl" id="roomurl" value="thue-phong-0/phong-63099">
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Họ và tên </label>
+                                <input required type="text" name="name" id="name" class="form-control" placeholder="Nhập tên của bạn">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Điện thoại </label>
+                                <input required type="number" name="phone" id="phone" class="form-control" placeholder="Nhập tên số điện thoại">
+                            </div>
+                        </div>
+                        <div class="col-lg12 col-12">
+                            <div class="form-group">
+                                <label>Ghi chú thêm</label>
+                                <textarea class="form-control" name="note" id="note" rows="10" placeholder="Nhập ghi chú nếu có..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <button type="button" class="btn btn-block btn-success btn-save">
+                                GỬI THÔNG TIN
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- lịch sử gọi chủ nhà -->
+<div class="modal fade" id="call-history" tabindex="-1" aria-labelledby="call-history">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="call-historyTitle">LỊCH SỬA GỌI CHỦ NHÀ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- phản ánh phòng -->
+<div class="modal fade" id="report-a-problem" tabindex="-1" aria-labelledby="report-a-problem">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="report-a-problemTitle">PHẢN ÁNH THÔNG TIN PHÒNG</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmreflect" name="frmreflect" novalidate="novalidate" class="cons-contact-form2">
+                    <input type="hidden" name="Type" id="roomid" value="63099">
+                    <input type="hidden" name="Type" id="roomurl" value="thue-phong-0/phong-63099">
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Số điện thoại người báo </label>
+                                <input required type="number" name="phone" id="phone" class="form-control" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <div class="form-group">
+                                <label>Vấn đề </label>
+                                <select required class="select" name="type" id="type">
+                                    <option value="">- Chọn -</option>
+                                    <option value="Sai giá">Sai giá</option>
+                                    <option value="Sai hình">Sai hình</option>
+                                    <option value="Sai thông tin">Sai thông tin</option>
+                                    <option value="Sai Host">Sai Host</option>
+                                    <option value="Thiếu video">Thiếu video</option>
+                                    <option value="Hình không đạt">Hình không đạt</option>
+                                    <option value="Chủ không thiện chí">Chủ không thiện chí</option>
+                                    <option value="Nhà MG">Nhà MG</option>
+                                    <option value="Lộ thông tin">Lộ thông tin</option>
+                                    <option value="Phòng đã hết">Phòng đã hết</option>
+                                    <option value="Phòng đang trống">Phòng đang trống</option>
+                                    <option value="Bật phòng mục tiêu">Bật phòng mục tiêu</option>
+                                    <option value="Gọi chủ nhà">Gọi chủ nhà</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg12 col-12">
+                            <div class="form-group">
+                                <label>Mô tả thêm</label>
+                                <textarea class="form-control" name="note" id="note" rows="10" placeholder="Nhập ghi chú nếu có..."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <button type="button" class="btn btn-block btn-success btn-save">
+                                GỬI PHẢN ÁNH
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

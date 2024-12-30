@@ -1,0 +1,70 @@
+﻿@model RentForRoom.DBContext.tbQuanHuyen
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>QUẢN LÝ THÔNG TIN QUẬN/HUYỆN</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CHỈNH SỬA THÔNG TIN QUẬN/HUYỆN</h5>
+
+                        <!-- General Form Elements -->
+                        <form action="/admin/AQuanHuyens/edit" method="post" enctype="multipart/form-data">
+                            @Html.HiddenFor(model => model.IDQuan)
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Chọn Thành Phố</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="IDTP">
+                                        @Html.Raw(Html.Action("GetThanhPho", "AQuanHuyens", new { id = Model.IDTP }))
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">Quận/Huyện</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="@Model.TenQuan" name="TenQuan" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Trạng Thái</label>
+                                <div class="col-sm-2">
+                                    <select name="Hide" class="form-control">
+                                        <option value="true" @(Model.Hide == true ? "selected" : "")>Ẩn</option>
+                                        <option value="false" @(Model.Hide == false ? "selected" : "")>Hiện</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                                    <a href="/Admin/AQuanHuyens" class="btn btn-danger"> Quay Lại</a>
+                                </div>
+                            </div>
+
+
+                        </form><!-- End General Form Elements -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+</main>

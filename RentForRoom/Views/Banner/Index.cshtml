@@ -1,0 +1,16 @@
+﻿@model RentForRoom.Models.BannerModel
+
+<section class="banner-section background-nhat" style="background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1)), url( @Model.HinhBanner ); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="banner-content">
+                    <h1 style="text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.5);">@Model.TieuDe</h1>
+                    @Html.Raw(Model.NoiDung)
+                </div>
+            </div>
+        </div>
+        @Html.Action("Index", "Search")
+    </div>
+</section>
+
